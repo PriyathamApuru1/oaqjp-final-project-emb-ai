@@ -11,6 +11,9 @@ def emo_detector():
 
     response = emotion_detector(text_to_analyze)
 
+    if response['dominant_emotion'] == None:
+        return "Invalid text! Please try again!"
+
     emotions = ', '.join(f"'{k}': {v}" for k, v in response.items() if k != 'dominant_emotion')
     responseText = f"For the given statement, the system response is {emotions}. The dominant emotion is {response['dominant_emotion']}."
 
